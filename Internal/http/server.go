@@ -3,9 +3,11 @@ package https
 import (
 	"fmt"
 
+	logger "github.com/Veerendra-C/SV-Backend.git/Internal/Log"
 	"github.com/Veerendra-C/SV-Backend.git/Internal/modals"
 	"github.com/Veerendra-C/SV-Backend.git/Internal/routes"
 	"github.com/gin-gonic/gin"
+	"go.uber.org/zap"
 )
 
 // to start the server
@@ -14,7 +16,7 @@ func StartServer(cfg *modals.Config) {
 
 	routes.Routes(router)
 	
-	fmt.Printf("Starting server in %s mode on port %s\n", cfg.Env, cfg.Port)
+	logger.Log.Info("Starting server", zap.String("mode", cfg.Env), zap.String("Port", cfg.Port))
 
 	err := router.Run(fmt.Sprintf(":%s",cfg.Port))
 	if err != nil {

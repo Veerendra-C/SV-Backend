@@ -1,9 +1,9 @@
 package config
 
 import (
-	"fmt"
 	"os"
 
+	logger "github.com/Veerendra-C/SV-Backend.git/Internal/Log"
 	"github.com/Veerendra-C/SV-Backend.git/Internal/modals"
 	"github.com/joho/godotenv"
 )
@@ -12,7 +12,7 @@ import (
 func LoadConfig() *modals.Config {
 	err := godotenv.Load()
 	if err != nil {
-		fmt.Println("Could not load the environment file.")
+		logger.Log.Info("Could not load the environment file.")
 		return &modals.Config{
 			Port: "NOT DEFINED",
 			Env: "NOT DEFINED",
