@@ -11,7 +11,7 @@ func main() {
 	cfg := config.LoadConfig()
 	
 	logger.InitLogger(cfg.Env)
-	db.InitDB()
+	db.InitDB(cfg.Env)
 
 	https.StartServer(cfg)
 }
