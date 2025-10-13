@@ -12,7 +12,7 @@ import (
 
 // to start the server
 func StartServer(cfg *modals.Config) {
-	router := gin.Default()
+	router := gin.New()
 
 	routes.Routes(router)
 	

@@ -101,15 +101,37 @@ func UserLogin(c *gin.Context) {
 		return
 	}
 
-	//respond
+	// Setting the security of the site
+	c.SetSameSite(http.SameSiteStrictMode)
+
+	// cookie 1: For sensitive data.
+	c.SetCookie(
+		"Authorization", // name
+		tokenString,     // value
+		3600*12,         // maxAge (12 hours)
+		"/",             // path
+		"",              // domain (empty = current domain)
+		false,            // secure (requires HTTPS)
+		true,            // httpOnly (prevents JavaScript access)
+	)
+
+	// cookie 2: For non-sensitive data.
+	c.SetCookie(
+		"user_preferences",
+		usr_cred.Role, // just the role for frontend UI decisions
+		3600*24*30,    // 30 days
+		"/",
+		"",
+		true,
+		false, // not httpOnly - frontend can read
+	)
+
+	//response to the client side
 	c.JSON(http.StatusOK, gin.H{
-		"message": "Login successful",
-		"token":   tokenString,
+		"status": "success",
 		"user": gin.H{
-			"id":    usr_cred.ID,
-			"email": usr_cred.Email,
-			"name":  usr_cred.Name,
-			"role":  usr_cred.Role,
+			"name": usr_cred.Name, // for display purposes
+			"role": usr_cred.Role, // for UI rendering decisions
 		},
 	})
 }
