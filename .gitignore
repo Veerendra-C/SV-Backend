@@ -1,1 +1,62 @@
+# Environment variables
 .env
+.env.local
+.env.*.local
+*.env
+
+# Go specific
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.work
+
+# Output directories
+/bin/
+/tmp/
+/dist/
+
+# IDE specific
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Debug files
+debug/
+debug.test
+
+# Binary files
+/main
+
+# Dependencies
+/vendor/
+
+# Log files
+*.log
+/logs/
+/Internal/Log/*.log
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# JWT or other security related files
+*.pem
+*.key
+*.cert
+
+# Project specific directories
+/uploads/
+/storage/
+/Internal/storage/
+/tmp/
+
+# System Files
+Thumbs.db
+.DS_Store
