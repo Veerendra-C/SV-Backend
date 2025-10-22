@@ -32,9 +32,7 @@ func Routes(r *gin.Engine) {
 		userRoutes := api.Group("/user")
 		userRoutes.Use(middleware.RequireUser)
 		{
-			// Add your user-level routes here
-			// userRoutes.GET("/profile", handlers.GetProfile)
-			// userRoutes.PUT("/profile", handlers.UpdateProfile)
+			userRoutes.POST("/upload",handlers.UploadFileHandler)
 		}
 
 		// Admin only routes
