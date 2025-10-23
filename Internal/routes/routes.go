@@ -32,16 +32,18 @@ func Routes(r *gin.Engine) {
 		userRoutes := api.Group("/user")
 		userRoutes.Use(middleware.RequireUser)
 		{
-			userRoutes.POST("/upload",handlers.UploadFileHandler)
+			//POST methods
+			userRoutes.POST("/upload",handlers.UploadFileHandler) // for uploading a file
+
+			//GET methods
+			userRoutes.GET("/retrive/:bucket/:filename", handlers.RetriveFileHandler) // for streaming a file throught backend
 		}
 
 		// Admin only routes
 		adminRoutes := api.Group("/admin")
 		adminRoutes.Use(middleware.RequireAdmin)
 		{
-			// Add your admin-level routes here
-			// adminRoutes.GET("/users", handlers.ListAllUsers)
-			// adminRoutes.DELETE("/users/:id", handlers.DeleteUser)
+			
 		}
 	}
 }

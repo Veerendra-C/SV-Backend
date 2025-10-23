@@ -33,6 +33,7 @@ func UploadFileHandler(c *gin.Context) {
 	defer file.Close()
 	logger.Log.Info("The file is received successfully")
 
+	// calling the function to handle upload
 	err = services.HandleFileUpload(userID, file, header)
 	if err != nil {
 		logger.Log.Error("Failed to upload file", zap.Error(err))
