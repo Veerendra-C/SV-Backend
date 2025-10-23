@@ -12,6 +12,7 @@ type File struct {
 	Encrypted  bool      `gorm:"default:false" json:"encrypted"`
 	Bucketname string    `gorm:"type:text;not null" json:"bucketname"`
 	DbKey      string    `gorm:"column:db_key;type:text;not null" json:"db_key"`
+	EncrKey    string    `gorm:"column:encrKey;type: text;not null" json:"encr_key"`
 	CreatedAt  time.Time `gorm:"autoCreateTime" json:"created_at"`
 	UpdatedAt  time.Time `gorm:"autoUpdateTime" json:"updated_at"`
 

@@ -75,7 +75,7 @@ func HandleFileUpload(UserID string, file multipart.File, header *multipart.File
 		zap.String("key", minioKey))
 
 	// Store metadata in database
-	err = repo.FileMetaData(UserID, filename, contentType, header.Filename, bucket, key, lastModifiedTime)
+	err = repo.FileMetaData(UserID, filename, contentType, header.Filename, bucket, minioKey, lastModifiedTime, key)
 	if err != nil {
 		logger.Log.Error("Failed to store file metadata",
 			zap.String("filename", filename),
