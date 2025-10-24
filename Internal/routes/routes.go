@@ -34,6 +34,7 @@ func Routes(r *gin.Engine) {
 		{
 			//POST methods
 			userRoutes.POST("/upload",handlers.UploadFileHandler) // for uploading a file
+			userRoutes.POST("/share", handlers.ShareFileHandler) // for sharing a file
 
 			//GET methods
 			userRoutes.GET("/retrive/:bucket/:filename", handlers.RetriveFileHandler) // for streaming a file throught backend
